@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq5ed3206xpmj"]
+[gd_scene load_steps=12 format=3 uid="uid://dq5ed3206xpmj"]
 
 [ext_resource type="PackedScene" uid="uid://byemw5s2njx7m" path="res://Component/Ships/Test_Ship/Test_01.glb" id="1_7k3u0"]
 [ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/PlayerInput.gd" id="2_gk1ou"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://bidfkho8hyrqq" path="res://Component/Ships/Test_Ship/ShipComponents.gd" id="3_eg5tq"]
 [ext_resource type="Script" uid="uid://c8w00f2f5b67f" path="res://Component/Ships/Ship Components/ShipEngine.gd" id="3_g83f7"]
 [ext_resource type="Script" uid="uid://d00wjyypl47uj" path="res://Component/Ships/Ship Components/ShipChasis.gd" id="5_4hrrv"]
+[ext_resource type="Script" uid="uid://bi0imy68jv7ry" path="res://Component/Ships/Ship Components/ShipBurner.gd" id="5_dii8a"]
 [ext_resource type="Script" uid="uid://dilxu6wgj8mny" path="res://Component/Ships/Ship Components/Telemetry.gd" id="5_q7lye"]
+[ext_resource type="Script" uid="uid://by0jsimpx8fud" path="res://Component/Ships/Ship Components/ShipBodywork.gd" id="6_05umi"]
 [ext_resource type="Script" uid="uid://byp3sn1mtjl6y" path="res://Component/Ships/Ship Components/ShipBrakes.gd" id="6_6ec8x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eg5tq"]
@@ -35,15 +37,20 @@ ship_rb = NodePath("..")
 
 [node name="ENGINE" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("3_g83f7")
-engine_power = 100
+engine_power = 100.0
+turning_power = 10.0
 
 [node name="BURNER" type="Node" parent="SHIP_COMPONENTS"]
+script = ExtResource("5_dii8a")
+burner_power = 100.0
 
 [node name="CHASIS" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("5_4hrrv")
 drag_power = 100.0
 
 [node name="BODYWORK" type="Node" parent="SHIP_COMPONENTS"]
+script = ExtResource("6_05umi")
+sideslip_drag_power = 100.0
 
 [node name="BRAKES" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("6_6ec8x")
