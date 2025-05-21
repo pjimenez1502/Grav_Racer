@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://crywyhqekjam8"]
+
+[ext_resource type="PackedScene" uid="uid://dq5ed3206xpmj" path="res://Component/Ships/Test_Ship/test_ship.tscn" id="1_vlkx1"]
+
+[node name="Test Circuit 01" type="Node3D"]
+
+[node name="TEST_SHIP" parent="." instance=ExtResource("1_vlkx1")]

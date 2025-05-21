@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq5ed3206xpmj"]
+
+[ext_resource type="PackedScene" uid="uid://byemw5s2njx7m" path="res://Component/Ships/Test_Ship/Test_01.glb" id="1_7k3u0"]
+[ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/player_input.gd" id="2_gk1ou"]
+
+[node name="TEST_SHIP" type="Node3D"]
+
+[node name="SHIP" type="Node3D" parent="."]
+
+[node name="Test_01" parent="SHIP" instance=ExtResource("1_7k3u0")]
+
+[node name="PLAYER_INPUT" type="Node" parent="."]
+script = ExtResource("2_gk1ou")
+
+[node name="SHIP_COMPONENTS" type="Node" parent="."]
+
+[node name="ENGINE" type="Node" parent="SHIP_COMPONENTS"]
+
+[node name="BURNER" type="Node" parent="SHIP_COMPONENTS"]
+
+[node name="CHASI" type="Node" parent="SHIP_COMPONENTS"]
+
+[node name="SHIELD" type="Node" parent="SHIP_COMPONENTS"]
