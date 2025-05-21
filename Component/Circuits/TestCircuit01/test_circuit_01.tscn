@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://crywyhqekjam8"]
+[gd_scene load_steps=3 format=3 uid="uid://crywyhqekjam8"]
 
 [ext_resource type="PackedScene" uid="uid://dq5ed3206xpmj" path="res://Component/Ships/Test_Ship/test_ship.tscn" id="1_vlkx1"]
+[ext_resource type="PackedScene" uid="uid://b6vk31gnujsbc" path="res://Component/Circuits/TestCircuit01/Circuit Test 01.glb" id="2_r4jpx"]
 
 [node name="Test Circuit 01" type="Node3D"]
 
 [node name="TEST_SHIP" parent="." instance=ExtResource("1_vlkx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.18261, 0)
+
+[node name="Circuit Test 01" parent="." instance=ExtResource("2_r4jpx")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.896115, 0.443822, 0, -0.443822, 0.896115, 0, 83.5633, 0)
