@@ -3,7 +3,7 @@ class_name ShipChasis
 
 var ship_rb : RigidBody3D
 
-@export var drag_power : float
+@export var drag_power : float = 100
 
 func chasis_drag(forward_speed: float) -> void:
 	#var forward_speed : float = -ship_rb.global_transform.basis.z.dot(ship_rb.linear_velocity)

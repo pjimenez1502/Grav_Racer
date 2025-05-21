@@ -3,7 +3,7 @@ class_name ShipBrakes
 
 var ship_rb : RigidBody3D
 
-@export var brake_power : float
+@export var brake_power : float = 100
 
 func braking(brake: float, forward_speed: float) -> void:
 	#var forward_speed : float = -ship_rb.global_transform.basis.z.dot(ship_rb.linear_velocity)

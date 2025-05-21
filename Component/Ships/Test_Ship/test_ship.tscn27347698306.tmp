@@ -16,8 +16,6 @@ radius = 3.09837
 height = 11.1542
 
 [node name="TEST_SHIP" type="RigidBody3D"]
-axis_lock_angular_x = true
-axis_lock_angular_z = true
 mass = 10.0
 gravity_scale = 0.0
 angular_damp = 4.0
@@ -33,10 +31,9 @@ shape = SubResource("CapsuleShape3D_eg5tq")
 [node name="PLAYER_INPUT" type="Node" parent="."]
 script = ExtResource("2_gk1ou")
 
-[node name="SHIP_COMPONENTS" type="Node" parent="." node_paths=PackedStringArray("ship_rb", "ship_mesh")]
+[node name="SHIP_COMPONENTS" type="Node" parent="." node_paths=PackedStringArray("ship_rb")]
 script = ExtResource("3_eg5tq")
 ship_rb = NodePath("..")
-ship_mesh = NodePath("../SHIP")
 
 [node name="ENGINE" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("3_g83f7")

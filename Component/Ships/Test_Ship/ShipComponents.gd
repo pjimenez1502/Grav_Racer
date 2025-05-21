@@ -4,6 +4,7 @@ class_name ShipComponents
 @onready var telemetry: ShipTelemetry = $"../TELEMETRY"
 
 @export var ship_rb: RigidBody3D
+@export var ship_mesh: Node3D
 
 @onready var player_input: ShipPlayerControl = $"../PLAYER_INPUT"
 
@@ -28,10 +29,11 @@ func init_ship() -> void:
 
 func ship_running() -> void:
 	engine.thrust(player_input.get_throttle())
-	engine.turning(player_input.get_turn_axis(), telemetry.telemetry_speedometer())
+	
 	burner.thrust(player_input.get_burner())
 	
 	chasis.chasis_drag(telemetry.telemetry_speedometer())
-	bodywork.bodywork_drag()
+	bodywork.bodywork_drag(telemetry.telemetry_sideslip())
+	bodywork.turning(player_input.get_turn_axis(), telemetry.telemetry_speedometer(), ship_mesh)
 	
 	brakes.braking(player_input.get_brake(), telemetry.telemetry_speedometer())
