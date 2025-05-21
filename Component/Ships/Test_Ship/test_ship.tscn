@@ -12,8 +12,8 @@
 [ext_resource type="Script" uid="uid://byp3sn1mtjl6y" path="res://Component/Ships/Ship Components/ShipBrakes.gd" id="6_6ec8x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eg5tq"]
-radius = 4.74711
-height = 16.7733
+radius = 3.09837
+height = 11.1542
 
 [node name="TEST_SHIP" type="RigidBody3D"]
 mass = 10.0
