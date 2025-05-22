@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://crywyhqekjam8"]
+[gd_scene load_steps=6 format=3 uid="uid://crywyhqekjam8"]
 
 [ext_resource type="PackedScene" uid="uid://dq5ed3206xpmj" path="res://Component/Ships/Test_Ship/test_ship.tscn" id="1_vlkx1"]
 [ext_resource type="PackedScene" uid="uid://b6vk31gnujsbc" path="res://Component/Circuits/TestCircuit01/Circuit Test 01.glb" id="2_r4jpx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4jpx"]
+diffuse_mode = 3
+albedo_color = Color(0.470076, 0.470076, 0.470076, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7uvr"]
+transparency = 1
+diffuse_mode = 3
+albedo_color = Color(0.32549, 1, 1, 0.211765)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6b6n"]
+diffuse_mode = 3
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="Test Circuit 01" type="Node3D"]
 
@@ -10,7 +23,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.18261, 0)
 
 [node name="Circuit Test 01" parent="." instance=ExtResource("2_r4jpx")]
 
+[node name="Road " parent="Circuit Test 01" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_r4jpx")
+
+[node name="Barrier " parent="Circuit Test 01" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h7uvr")
+
+[node name="Start " parent="Circuit Test 01" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_m6b6n")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.896115, 0.443822, 0, -0.443822, 0.896115, 0, 83.5633, 0)
+transform = Transform3D(1, 0, 0, 0, 0.663587, 0.748099, 0, -0.748099, 0.663587, 0, 83.5633, 0)
 
 [editable path="Circuit Test 01"]

@@ -7,7 +7,7 @@ var ship_rb : RigidBody3D
 @export var fuel_efficiency: int = 100
 
 func thrust(throttle: float) -> Dictionary[String, float]:
-	var power : float = engine_power * 3 * throttle
+	var power : float = engine_power * 5 * throttle
 	ship_rb.apply_force(-ship_rb.transform.basis.z * power)
 	
 	var fuel_flow: float = throttle * (100 + (100-fuel_efficiency) * 2) / 100 + 0.1

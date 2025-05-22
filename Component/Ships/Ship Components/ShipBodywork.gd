@@ -16,7 +16,7 @@ func bodywork(sideslip: float, turn_axis: float, speed: float, ship_mesh: Node3D
 
 func bodywork_drag(sideslip: float) -> float:
 	#var sideslip : float = ship_rb.global_transform.basis.x.dot(ship_rb.linear_velocity)
-	var sidedrag : float = (sideslip_drag_power) * (sideslip**2 / 2) / 150 * -sign(sideslip)
+	var sidedrag : float = (sideslip_drag_power) * (sideslip**2 / 2) / 250 * -sign(sideslip)
 	ship_rb.apply_force(ship_rb.transform.basis.x * sidedrag)
 	ship_rb.apply_force(-ship_rb.transform.basis.z * abs(sidedrag / 8))
 	
@@ -24,7 +24,7 @@ func bodywork_drag(sideslip: float) -> float:
 
 func turning(turn_axis: float, forward_speed: float, ship_mesh: Node3D) -> float:
 	var turn_power : float = turning_power * 10 * turn_axis
-	var direction_stiffening : float = 1 - forward_speed / 200
+	var direction_stiffening : float = 1 - forward_speed / 300
 	
 	ship_rb.apply_torque(-ship_rb.transform.basis.y * turn_power * direction_stiffening)
 	turning_bank(turn_axis, direction_stiffening, ship_mesh)

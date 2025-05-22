@@ -14,6 +14,8 @@ class_name ShipComponents
 @onready var brakes: ShipBrakes = $BRAKES			# Braking
 @onready var burner: ShipBurner = $BURNER			# Boost
 
+@onready var hover: ShipHover = $HOVER
+
 func _ready() -> void:
 	init_ship()
 
@@ -26,6 +28,7 @@ func init_ship() -> void:
 	brakes.ship_rb = ship_rb
 	bodywork.ship_rb = ship_rb
 	burner.ship_rb = ship_rb
+	hover.ship_rb = ship_rb
 	
 	chasis.fuel_setup()
 	burner.heat_setup()

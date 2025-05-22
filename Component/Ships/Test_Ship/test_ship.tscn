@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dq5ed3206xpmj"]
+[gd_scene load_steps=17 format=4 uid="uid://dq5ed3206xpmj"]
 
 [ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/PlayerInput.gd" id="2_gk1ou"]
 [ext_resource type="Script" uid="uid://bv3ekq3e36sq3" path="res://Component/Camera/ShipFollowCamera.gd" id="3_3giqs"]
@@ -13,8 +13,11 @@
 [ext_resource type="Script" uid="uid://cab5bkvmib1we" path="res://Component/Camera/CameraShake.gd" id="10_dii8a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eg5tq"]
-radius = 3.09837
-height = 11.1542
+radius = 2.76282
+height = 9.31758
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vpib"]
+size = Vector3(3.5, 7.805, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeg6e"]
 
@@ -52,11 +55,21 @@ shadow_mesh = SubResource("ArrayMesh_n6ip5")
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 10.0
+gravity_scale = 0.0
 angular_damp = 4.0
+
+[node name="HoverRaycast" type="RayCast3D" parent="."]
+exclude_parent = false
+target_position = Vector3(0, -5, 0)
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.710648, 0)
 shape = SubResource("CapsuleShape3D_eg5tq")
+disabled = true
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_3vpib")
 
 [node name="SHIP" type="Node3D" parent="."]
 
@@ -93,11 +106,9 @@ script = ExtResource("6_05umi")
 [node name="BRAKES" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("6_6ec8x")
 
-[node name="HOVER" type="Node" parent="SHIP_COMPONENTS"]
+[node name="HOVER" type="Node" parent="SHIP_COMPONENTS" node_paths=PackedStringArray("hover_raycast")]
 script = ExtResource("8_3vpib")
-
-[node name="HoverRaycast" type="RayCast3D" parent="SHIP_COMPONENTS/HOVER"]
-target_position = Vector3(0, -3, 0)
+hover_raycast = NodePath("../../HoverRaycast")
 
 [node name="TELEMETRY" type="Node" parent="." node_paths=PackedStringArray("ship_rb")]
 script = ExtResource("5_q7lye")

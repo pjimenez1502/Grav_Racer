@@ -17,7 +17,7 @@ func chasis(speed: float, fuel_burn: float) -> Dictionary[String, float]:
 
 func chasis_drag(forward_speed: float) -> float:
 	#var forward_speed : float = -ship_rb.global_transform.basis.z.dot(ship_rb.linear_velocity)
-	var forward_drag : float = (drag_power) * (forward_speed**2 / 2) / 1000000
+	var forward_drag : float = (drag_power) * (forward_speed**2 / 2) / 500000
 	ship_rb.apply_force(ship_rb.transform.basis.z * -forward_drag)
 	
 	return forward_drag
