@@ -11,11 +11,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m0s8s")
 
-[node name="SpeedValue" type="Label" parent="."]
-unique_name_in_owner = true
+[node name="DebugData" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 740.0
-offset_top = 302.0
-offset_right = 780.0
-offset_bottom = 325.0
+offset_right = 140.0
+offset_bottom = 23.0
+
+[node name="Speed" type="HBoxContainer" parent="DebugData"]
+layout_mode = 2
+
+[node name="Speed Label" type="Label" parent="DebugData/Speed"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Speed: "
+
+[node name="Speed Value" type="Label" parent="DebugData/Speed"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+
+[node name="Fuel" type="HBoxContainer" parent="DebugData"]
+layout_mode = 2
+
+[node name="Fuel Label" type="Label" parent="DebugData/Fuel"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Fuel: "
+
+[node name="Fuel Value" type="Label" parent="DebugData/Fuel"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "100"

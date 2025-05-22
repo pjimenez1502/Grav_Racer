@@ -26,13 +26,14 @@ func init_ship() -> void:
 	chasis.ship_rb = ship_rb
 	brakes.ship_rb = ship_rb
 	bodywork.ship_rb = ship_rb
+	
+	chasis.fuel_setup()
 
 func ship_running() -> void:
-	engine.thrust(player_input.get_throttle())
-	burner.thrust(player_input.get_burner())
+	var engine_telemetry : Dictionary = engine.thrust(player_input.get_throttle())
+	var burner_telemetry : Dictionary = burner.thrust(player_input.get_burner())
+	var chasis_telemetry : Dictionary = chasis.chasis(telemetry.telemetry_speedometer(), engine_telemetry["fuel_flow"])
+	var bodywork_telemetry : Dictionary = bodywork.bodywork(telemetry.telemetry_sideslip(), player_input.get_turn_axis(), telemetry.telemetry_speedometer(), ship_mesh)
+	var brakes_telemetry : Dictionary = brakes.braking(player_input.get_brake(), telemetry.telemetry_speedometer())
 	
-	chasis.chasis_drag(telemetry.telemetry_speedometer())
-	bodywork.bodywork_drag(telemetry.telemetry_sideslip())
-	bodywork.turning(player_input.get_turn_axis(), telemetry.telemetry_speedometer(), ship_mesh)
-	
-	brakes.braking(player_input.get_brake(), telemetry.telemetry_speedometer())
+	telemetry.update_fuel(chasis_telemetry["fuel"])

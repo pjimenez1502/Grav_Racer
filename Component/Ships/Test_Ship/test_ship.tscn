@@ -65,7 +65,7 @@ shape = SubResource("CapsuleShape3D_eg5tq")
 mesh = SubResource("ArrayMesh_i06c7")
 skeleton = NodePath("")
 
-[node name="Camera3D2" type="Camera3D" parent="SHIP"]
+[node name="First Person Camera" type="Camera3D" parent="SHIP"]
 transform = Transform3D(1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 1.07755, 0.232021)
 current = true
 
@@ -100,7 +100,7 @@ telemetry_print = true
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 10, 20)
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("target")]
+[node name="Third Person Camera" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 20)
 top_level = true
 script = ExtResource("3_3giqs")

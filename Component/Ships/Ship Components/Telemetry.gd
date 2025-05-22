@@ -4,6 +4,8 @@ class_name ShipTelemetry
 @export var ship_rb : RigidBody3D
 @export var telemetry_print : bool
 
+var fuel: int
+
 func _physics_process(delta: float) -> void:
 	if !telemetry_print:
 		return
@@ -14,12 +16,13 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func telemetry_speedometer() -> float:
-	#return ship_rb.linear_velocity
 	return -ship_rb.transform.basis.z.dot(ship_rb.linear_velocity.normalized()) * ship_rb.linear_velocity.length()
 
 func telemetry_sideslip() -> float:
-	
 	return ship_rb.transform.basis.x.dot(ship_rb.linear_velocity.normalized()) * ship_rb.linear_velocity.length()
 
-func telemetry_fuel() -> float:
-	return 0
+func update_fuel(_fuel: int) -> void:
+	fuel = _fuel
+
+func telemetry_fuel() -> int:
+	return fuel
