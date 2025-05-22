@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dq5ed3206xpmj"]
+[gd_scene load_steps=16 format=4 uid="uid://dq5ed3206xpmj"]
 
 [ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/PlayerInput.gd" id="2_gk1ou"]
 [ext_resource type="Script" uid="uid://bv3ekq3e36sq3" path="res://Component/Camera/ShipFollowCamera.gd" id="3_3giqs"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dilxu6wgj8mny" path="res://Component/Ships/Ship Components/Telemetry.gd" id="5_q7lye"]
 [ext_resource type="Script" uid="uid://by0jsimpx8fud" path="res://Component/Ships/Ship Components/ShipBodywork.gd" id="6_05umi"]
 [ext_resource type="Script" uid="uid://byp3sn1mtjl6y" path="res://Component/Ships/Ship Components/ShipBrakes.gd" id="6_6ec8x"]
+[ext_resource type="Script" uid="uid://b3sunxklbndrb" path="res://Component/Ships/Ship Components/Hover.gd" id="8_3vpib"]
+[ext_resource type="Script" uid="uid://cab5bkvmib1we" path="res://Component/Camera/CameraShake.gd" id="10_dii8a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eg5tq"]
 radius = 3.09837
@@ -50,11 +52,10 @@ shadow_mesh = SubResource("ArrayMesh_n6ip5")
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 10.0
-gravity_scale = 0.0
 angular_damp = 4.0
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.710648, 0)
 shape = SubResource("CapsuleShape3D_eg5tq")
 
 [node name="SHIP" type="Node3D" parent="."]
@@ -92,6 +93,12 @@ script = ExtResource("6_05umi")
 [node name="BRAKES" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("6_6ec8x")
 
+[node name="HOVER" type="Node" parent="SHIP_COMPONENTS"]
+script = ExtResource("8_3vpib")
+
+[node name="HoverRaycast" type="RayCast3D" parent="SHIP_COMPONENTS/HOVER"]
+target_position = Vector3(0, -3, 0)
+
 [node name="TELEMETRY" type="Node" parent="." node_paths=PackedStringArray("ship_rb")]
 script = ExtResource("5_q7lye")
 ship_rb = NodePath("..")
@@ -103,6 +110,12 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 [node name="Third Person Camera" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 20)
 top_level = true
+current = true
 script = ExtResource("3_3giqs")
 target = NodePath("..")
 smooth_speed = 20.0
+
+[node name="CAMERASHAKE" type="Node" parent="CameraPivot/Third Person Camera" node_paths=PackedStringArray("telemetry", "camera")]
+script = ExtResource("10_dii8a")
+telemetry = NodePath("../../../TELEMETRY")
+camera = NodePath("..")

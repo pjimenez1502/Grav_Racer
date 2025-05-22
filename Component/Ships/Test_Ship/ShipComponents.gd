@@ -39,3 +39,4 @@ func ship_running() -> void:
 	
 	telemetry.update_fuel(chasis_telemetry["fuel"])
 	telemetry.update_heat(burner_telemetry["heat"])
+	telemetry.update_stiffening(bodywork_telemetry["stiffening"])

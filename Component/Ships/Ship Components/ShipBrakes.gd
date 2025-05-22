@@ -16,7 +16,7 @@ func braking(brake: float, forward_speed: float) -> Dictionary[String, float]:
 		power = brake_power * 0.2 * brake
 		ship_rb.apply_force(ship_rb.transform.basis.z * power)
 	
-	var heat_generation: float = clamp(brake * forward_speed * heat_recycling / 10000, 0, INF)
+	var heat_generation: float = clamp(brake * forward_speed * heat_recycling / 20000, 0, INF)
 	
 	return {"power": power, "heat": heat_generation}
 	#print("#HEATGEN:", heat_generation)

@@ -11,13 +11,11 @@ var heat_capacity: int
 var heat_current: float
 
 func burner(burn: float, heat_gen: float) -> Dictionary[String, float]:
-	print(heat_gen)
 	heat_update(heat_gen)
 	
 	if !heat_update(-heat_burn(burn)):
 		return {"power": 0, "heat": heat_current}
 	var power : float = thrust(burn)
-	print(power)
 	return {"power": power, "heat": heat_current}
 
 func thrust(burn: float) -> float:
