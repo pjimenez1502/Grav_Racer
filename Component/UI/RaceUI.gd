@@ -5,7 +5,9 @@ class_name RaceUI
 
 @onready var speed_value: Label = %"Speed Value"
 @onready var fuel_value: Label = %"Fuel Value"
+@onready var heat_value: Label = %"Heat Value"
 
 func _physics_process(delta: float) -> void:
 	speed_value.text = str(int(player_ship.telemetry.telemetry_speedometer() * 3.6))
 	fuel_value.text = str(int(player_ship.telemetry.telemetry_fuel()))
+	heat_value.text = str(int(player_ship.telemetry.telemetry_heat()))

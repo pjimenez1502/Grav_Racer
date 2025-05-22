@@ -10,7 +10,7 @@ func thrust(throttle: float) -> Dictionary[String, float]:
 	var power : float = engine_power * 3 * throttle
 	ship_rb.apply_force(-ship_rb.transform.basis.z * power)
 	
-	var fuel_flow: float = throttle * (100 + (100-fuel_efficiency) * 2) / 100
+	var fuel_flow: float = throttle * (100 + (100-fuel_efficiency) * 2) / 100 + 0.1
 	return {"power": power, "fuel_flow": fuel_flow}
 	
 	#print("#ENGINEPOWER: ", power)

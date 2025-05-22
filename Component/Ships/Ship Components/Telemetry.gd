@@ -5,6 +5,7 @@ class_name ShipTelemetry
 @export var telemetry_print : bool
 
 var fuel: int
+var heat: int
 
 func _physics_process(delta: float) -> void:
 	if !telemetry_print:
@@ -23,6 +24,10 @@ func telemetry_sideslip() -> float:
 
 func update_fuel(_fuel: int) -> void:
 	fuel = _fuel
-
 func telemetry_fuel() -> int:
 	return fuel
+
+func update_heat(_heat: int) -> void:
+	heat = _heat
+func telemetry_heat() -> int:
+	return heat

@@ -4,16 +4,16 @@ class_name ShipChasis
 var ship_rb : RigidBody3D
 
 @export var drag_power : int = 100
-@export var fuel_capacity : int = 100
+@export var fuel : int = 100
 
-var tank_capacity : int
-var current_fuel : int
+var fuel_capacity : int
+var fuel_current : float
 
 func chasis(speed: float, fuel_burn: float) -> Dictionary[String, float]:
 	var drag : float = chasis_drag(speed)
-	var current_fuel : int = fuel_burn(fuel_burn)
+	var fuel_current : float = fuel_burn(fuel_burn)
 
-	return {"drag": drag, "fuel": current_fuel}
+	return {"drag": drag, "fuel": fuel_current}
 
 func chasis_drag(forward_speed: float) -> float:
 	#var forward_speed : float = -ship_rb.global_transform.basis.z.dot(ship_rb.linear_velocity)
@@ -24,12 +24,12 @@ func chasis_drag(forward_speed: float) -> float:
 	#print("#CHASISDRAG: ", forward_drag)
 
 func fuel_setup() -> void:
-	tank_capacity = fuel_capacity * 100
-	current_fuel = tank_capacity
+	fuel_capacity = fuel * 100
+	fuel_current = fuel_capacity
 
 func refuel() -> void:
-	current_fuel = tank_capacity
+	fuel_current = fuel_capacity
 
-func fuel_burn(fuel_burn: float) -> int:
-	current_fuel -= fuel_burn
-	return current_fuel
+func fuel_burn(fuel_burn: float) -> float:
+	fuel_current -= fuel_burn
+	return fuel_current
