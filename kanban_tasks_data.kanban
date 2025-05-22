@@ -11,7 +11,8 @@
 			"uuid": "29f0da42-4cf8-467a-97bf-aa8709155d87",
 			"title": "Todo",
 			"tasks": [
-				"7ace6f58-4580-4bf3-8c78-ca6d0c737612"
+				"7ace6f58-4580-4bf3-8c78-ca6d0c737612",
+				"454a12bb-e8c7-4b8b-a6fe-abb78f84928b"
 			]
 		},
 		{
@@ -30,6 +31,13 @@
 			"uuid": "7ace6f58-4580-4bf3-8c78-ca6d0c737612",
 			"title": "Ship Components",
 			"description": "\nEngine: \n\t- Power\n\t- Fuel efficiency\n\nAfterburner:\n\t- Power\n\t- Heat usage\n\nChasis:\n\t- Drag\n\t- Fuel Capacity\n\nBodywork:\n\t- Sideslip drag\n\nBrakes:\n\t- Power\n\t- Heat collection\n\nOn all components:\n\t- Durability",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "454a12bb-e8c7-4b8b-a6fe-abb78f84928b",
+			"title": "MAIN MODES",
+			"description": "CAREER MODE\n\nGenerate a starter custom car with low engineering stats and X ammount of credits\nCompete in several weekends and spend resources between weekends to improve the car and driver equipment\n\n\nFAST RACE\n\nSelect a custom car with custom stats and race starting position",
 			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
 			"steps": []
 		}

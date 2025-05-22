@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq5ed3206xpmj"]
+[gd_scene load_steps=14 format=4 uid="uid://dq5ed3206xpmj"]
 
-[ext_resource type="PackedScene" uid="uid://byemw5s2njx7m" path="res://Component/Ships/Test_Ship/Test_01.glb" id="1_7k3u0"]
 [ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/PlayerInput.gd" id="2_gk1ou"]
 [ext_resource type="Script" uid="uid://bv3ekq3e36sq3" path="res://Component/Camera/ShipFollowCamera.gd" id="3_3giqs"]
 [ext_resource type="Script" uid="uid://bidfkho8hyrqq" path="res://Component/Ships/Test_Ship/ShipComponents.gd" id="3_eg5tq"]
@@ -15,6 +14,38 @@
 radius = 3.09837
 height = 11.1542
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeg6e"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n6ip5"]
+_surfaces = [{
+"aabb": AABB(-2.96985, -1.35765, -4.26667, 5.9397, 2.71529, 9.6),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAQACAAEAAgADAAAAAAABAAEAAgAEAAMAAAADAAUABQADAAQABgAEAAIAAQAGAAIABQAEAAcABgAHAAQAAAAFAAgACAAFAAcACAAHAAYAAQAAAAgAAQAIAAYAAQAIAAEAAQAGAAEAAQABAAEAAQABAAEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("ABI+wAAAAAC8uztAAAAAAAAAAACIiIjAAAAAAFHHrT+8uztAABK+vwAAAACrqqpAAAAAAFHHLT+rqqpAAAAAAFHHLb+rqqpAABI+QAAAAAC8uztAABK+PwAAAACrqqpAAAAAAFHHrb+8uztA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i06c7"]
+resource_name = "Test_01_Cube_001"
+_surfaces = [{
+"aabb": AABB(-2.96985, -1.35765, -4.26667, 5.9397, 2.71529, 9.6),
+"attribute_data": PackedByteArray("AADAPgAAgD8AACA/AABAPwAAID8AAIA/AADAPgAAQD8AAMA+AABAPwAAID8AAAA/AAAgPwAAQD8AAMA+AAAAPwAAwD4AAAA/AAAgPwAAgD4AACA/AAAAPwAAwD4AAIA+AAAgPwAAgD4AAGA/AACAPgAAYD8AAIA+AAAgPwAAgD4AAAA+AAAAPwAAwD4AAIA+AADAPgAAAD8AAAA+AACAPgAAID8AAAA/AABgPwAAgD4AAGA/AAAAPwAAID8AAIA+AADAPgAAgD4AACA/AAAAAAAAID8AAIA+AADAPgAAAAAAAMA+AACAPgAAID8AAIA+AAAgPwAAgD4AAMA+AACAPgAAID8AAIA/AADAPgAAgD8AAMA+AACAPwAAID8AAIA/AAAAPgAAgD4AAMA+AACAPgAAwD4AAIA+AAAAPgAAgD4="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_eeg6e"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("ABI+wAAAAAC8uztAAAAAAAAAAACIiIjAAAAAAFHHrT+8uztAAAAAAAAAAACIiIjAAAAAAAAAAACIiIjAAAAAAAAAAACIiIjAAAAAAAAAAACIiIjAAAAAAAAAAACIiIjAAAAAAAAAAACIiIjAABI+QAAAAAC8uztAAAAAAAAAAACIiIjAAAAAAFHHrb+8uztAABI+QAAAAAC8uztAAAAAAFHHLT+rqqpAAAAAAFHHrT+8uztAABK+PwAAAACrqqpAAAAAAAAAAACIiIjAAAAAAFHHrb+8uztAAAAAAAAAAACIiIjAABI+wAAAAAC8uztAAAAAAAAAAACIiIjAAAAAAFHHrT+8uztAAAAAAAAAAACIiIjAABI+QAAAAAC8uztAAAAAAFHHLb+rqqpAAAAAAFHHLT+rqqpAABK+PwAAAACrqqpAABK+vwAAAACrqqpAAAAAAFHHrb+8uztAABK+PwAAAACrqqpAABI+QAAAAAC8uztAAAAAAFHHLb+rqqpAAAAAAFHHrT+8uztAABK+vwAAAACrqqpAABI+wAAAAAC8uztAAAAAAFHHLT+rqqpAABI+wAAAAAC8uztAAAAAAFHHLb+rqqpAAAAAAFHHrb+8uztAABK+vwAAAACrqqpAx01w3NbXE9THTXDc1tcT1MdNcNzW1xPUx01w3P///7//f///////v/9///////+//3///////7//f///////vzeyjiPW1xPUN7KOI9bXE9Q3so4j////vzeyjiPW1xPUoaGPyf///z+hoY/J////P6Ghj8n///8/oaGPyf///z/HTY4j1tfrq8dNjiPW1+urx02OI////7/HTY4j1tfrqzeycNwoKBPUN7Jw3CgoE9Q3snDc////vzeycNwoKBPU/3//f9fXE9T/f/9/19cT1P9//3/X1xPU/3//f9fXE9ShoW82////P6Ghbzb///8/oaFvNv///z+hoW82////P11ej8n///8/XV6Pyf///z9dXo/J////P11ej8n///8/XV5vNv///z9dXm82////P11ebzb///8/XV5vNv///z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_n6ip5")
+
 [node name="TEST_SHIP" type="RigidBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -22,13 +53,21 @@ mass = 10.0
 gravity_scale = 0.0
 angular_damp = 4.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_eg5tq")
 
 [node name="SHIP" type="Node3D" parent="."]
 
-[node name="Test_01" parent="SHIP" instance=ExtResource("1_7k3u0")]
+[node name="Test_01" type="Node3D" parent="SHIP"]
+
+[node name="Cube" type="MeshInstance3D" parent="SHIP/Test_01"]
+mesh = SubResource("ArrayMesh_i06c7")
+skeleton = NodePath("")
+
+[node name="Camera3D2" type="Camera3D" parent="SHIP"]
+transform = Transform3D(1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 1.07755, 0.232021)
+current = true
 
 [node name="PLAYER_INPUT" type="Node" parent="."]
 script = ExtResource("2_gk1ou")
@@ -64,7 +103,6 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 20)
 top_level = true
-current = true
 script = ExtResource("3_3giqs")
 target = NodePath("..")
 smooth_speed = 20.0

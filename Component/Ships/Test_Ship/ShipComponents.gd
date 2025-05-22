@@ -8,7 +8,7 @@ class_name ShipComponents
 
 @onready var player_input: ShipPlayerControl = $"../PLAYER_INPUT"
 
-@onready var engine: ShipEngine = $ENGINE	# Power
+@onready var engine: ShipEngine = $ENGINE			# Power
 @onready var burner: ShipBurner = $BURNER			# Boost
 @onready var chasis: ShipChasis = $CHASIS			# Drag
 @onready var bodywork: ShipBodywork = $BODYWORK		# Lateral Drifting
@@ -29,7 +29,6 @@ func init_ship() -> void:
 
 func ship_running() -> void:
 	engine.thrust(player_input.get_throttle())
-	
 	burner.thrust(player_input.get_burner())
 	
 	chasis.chasis_drag(telemetry.telemetry_speedometer())
