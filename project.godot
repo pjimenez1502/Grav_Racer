@@ -69,6 +69,11 @@ BURNER={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_4="TRACK"
+3d_physics/layer_5="BARRIER"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -9,28 +9,40 @@
 	"stages": [
 		{
 			"uuid": "29f0da42-4cf8-467a-97bf-aa8709155d87",
-			"title": "Todo",
+			"title": "CONCEPT",
 			"tasks": [
 				"7ace6f58-4580-4bf3-8c78-ca6d0c737612",
-				"454a12bb-e8c7-4b8b-a6fe-abb78f84928b"
+				"454a12bb-e8c7-4b8b-a6fe-abb78f84928b",
+				"148b63c2-01cd-4ce4-b59d-ac908de4681b"
 			]
 		},
 		{
 			"uuid": "968e6d92-7123-4786-908e-8d18df56196e",
-			"title": "Doing",
-			"tasks": []
+			"title": "TODO",
+			"tasks": [
+				"f8162792-46b6-4e78-82d1-68f28109626e",
+				"447db99f-c533-448d-8a99-3a91185b78db",
+				"94da03a3-c009-4826-a386-1628c2259092"
+			]
 		},
 		{
 			"uuid": "b4f1160d-a5d5-479e-b7a0-5052dba0fb2c",
-			"title": "Done",
+			"title": "DOING",
+			"tasks": [
+				"a3523c90-9481-4398-831e-bc010453ed5d"
+			]
+		},
+		{
+			"uuid": "59cb7c9d-b542-4fa6-8288-d5b2b118f71a",
+			"title": "DONE",
 			"tasks": []
 		}
 	],
 	"tasks": [
 		{
 			"uuid": "7ace6f58-4580-4bf3-8c78-ca6d0c737612",
-			"title": "Ship Components",
-			"description": "\nEngine: \n\t- Power\n\t- Fuel efficiency\n\nAfterburner:\n\t- Power\n\t- Heat usage\n\nChasis:\n\t- Drag\n\t- Fuel Capacity\n\nBodywork:\n\t- Sideslip drag\n\nBrakes:\n\t- Power\n\t- Heat collection\n\nOn all components:\n\t- Durability",
+			"title": "SHIP COMPONENTS",
+			"description": "\nEngine: \n\t- Power\n\t- Fuel efficiency\n\nAfterburner:\n\t- Power\n\t- Heat usage\n\nChasis:\n\t- Drag\n\t- Fuel Capacity\n\nBodywork:\n\t- Sideslip drag\n\t- Stiffening\n\t- Turning?\n\t\nBrakes:\n\t- Power\n\t- Heat collection\n\nOn all components:\n\t- Durability",
 			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
 			"steps": []
 		},
@@ -38,6 +50,41 @@
 			"uuid": "454a12bb-e8c7-4b8b-a6fe-abb78f84928b",
 			"title": "MAIN MODES",
 			"description": "CAREER MODE\n\nGenerate a starter custom car with low engineering stats and X ammount of credits\nCompete in several weekends and spend resources between weekends to improve the car and driver equipment\n\n\nFAST RACE\n\nSelect a custom car with custom stats and race starting position",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "f8162792-46b6-4e78-82d1-68f28109626e",
+			"title": "Ship Parts Models",
+			"description": "",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "94da03a3-c009-4826-a386-1628c2259092",
+			"title": "Ship Customization",
+			"description": "",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "447db99f-c533-448d-8a99-3a91185b78db",
+			"title": "Ship Parts ",
+			"description": "",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "148b63c2-01cd-4ce4-b59d-ac908de4681b",
+			"title": "COMMIT TARGETS",
+			"description": "23/05/25\n\n- Fix Hover\t\t--> Lerp Y to stay at X distance from ground. Grab ground normal and rotate ship. (only visual model or full ship?)\n- \n",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "a3523c90-9481-4398-831e-bc010453ed5d",
+			"title": "Ship Hovering",
+			"description": "- Stay above track using lerp\t\t\t-XX\n\n- Rotate ship according to Track Normal\n\n- Specific collider around track extending slightly out of track",
 			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
 			"steps": []
 		}
@@ -52,6 +99,9 @@
 			],
 			[
 				"b4f1160d-a5d5-479e-b7a0-5052dba0fb2c"
+			],
+			[
+				"59cb7c9d-b542-4fa6-8288-d5b2b118f71a"
 			]
 		]
 	}

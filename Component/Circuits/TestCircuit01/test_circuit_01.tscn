@@ -19,18 +19,27 @@ albedo_color = Color(1, 0, 0, 1)
 [node name="Test Circuit 01" type="Node3D"]
 
 [node name="TEST_SHIP" parent="." instance=ExtResource("1_vlkx1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.18261, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="Circuit Test 01" parent="." instance=ExtResource("2_r4jpx")]
 
 [node name="Road " parent="Circuit Test 01" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_r4jpx")
 
+[node name="StaticBody3D" parent="Circuit Test 01/Road " index="0"]
+collision_layer = 9
+
 [node name="Barrier " parent="Circuit Test 01" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_h7uvr")
 
+[node name="StaticBody3D" parent="Circuit Test 01/Barrier " index="0"]
+collision_layer = 17
+
 [node name="Start " parent="Circuit Test 01" index="2"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m6b6n")
+
+[node name="StaticBody3D" parent="Circuit Test 01/Start " index="0"]
+collision_layer = 17
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.663587, 0.748099, 0, -0.748099, 0.663587, 0, 83.5633, 0)

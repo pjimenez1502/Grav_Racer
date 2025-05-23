@@ -18,7 +18,8 @@ func bodywork_drag(sideslip: float) -> float:
 	#var sideslip : float = ship_rb.global_transform.basis.x.dot(ship_rb.linear_velocity)
 	var sidedrag : float = (sideslip_drag_power) * (sideslip**2 / 2) / 250 * -sign(sideslip)
 	ship_rb.apply_force(ship_rb.transform.basis.x * sidedrag)
-	ship_rb.apply_force(-ship_rb.transform.basis.z * abs(sidedrag / 8))
+	##FORWARD COMPENSATION
+	ship_rb.apply_force(-ship_rb.transform.basis.z * abs(sidedrag / 4))
 	
 	return sidedrag
 

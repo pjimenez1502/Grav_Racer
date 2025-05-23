@@ -59,8 +59,11 @@ gravity_scale = 0.0
 angular_damp = 4.0
 
 [node name="HoverRaycast" type="RayCast3D" parent="."]
-exclude_parent = false
 target_position = Vector3(0, -5, 0)
+
+[node name="TrackRaycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -100, 0)
+collision_mask = 8
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.710648, 0)
@@ -71,15 +74,19 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("BoxShape3D_3vpib")
 
-[node name="SHIP" type="Node3D" parent="."]
+[node name="Ship UP" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="Test_01" type="Node3D" parent="SHIP"]
+[node name="SHIP" type="Node3D" parent="Ship UP"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="Cube" type="MeshInstance3D" parent="SHIP/Test_01"]
+[node name="Test_01" type="Node3D" parent="Ship UP/SHIP"]
+
+[node name="Cube" type="MeshInstance3D" parent="Ship UP/SHIP/Test_01"]
 mesh = SubResource("ArrayMesh_i06c7")
 skeleton = NodePath("")
 
-[node name="First Person Camera" type="Camera3D" parent="SHIP"]
+[node name="First Person Camera" type="Camera3D" parent="Ship UP/SHIP"]
 transform = Transform3D(1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 1.07755, 0.232021)
 current = true
 
@@ -89,7 +96,7 @@ script = ExtResource("2_gk1ou")
 [node name="SHIP_COMPONENTS" type="Node" parent="." node_paths=PackedStringArray("ship_rb", "ship_mesh")]
 script = ExtResource("3_eg5tq")
 ship_rb = NodePath("..")
-ship_mesh = NodePath("../SHIP")
+ship_mesh = NodePath("../Ship UP/SHIP")
 
 [node name="ENGINE" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("3_g83f7")
@@ -106,9 +113,10 @@ script = ExtResource("6_05umi")
 [node name="BRAKES" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("6_6ec8x")
 
-[node name="HOVER" type="Node" parent="SHIP_COMPONENTS" node_paths=PackedStringArray("hover_raycast")]
+[node name="HOVER" type="Node" parent="SHIP_COMPONENTS" node_paths=PackedStringArray("hover_raycast", "track_raycast")]
 script = ExtResource("8_3vpib")
 hover_raycast = NodePath("../../HoverRaycast")
+track_raycast = NodePath("../../TrackRaycast")
 
 [node name="TELEMETRY" type="Node" parent="." node_paths=PackedStringArray("ship_rb")]
 script = ExtResource("5_q7lye")

@@ -6,6 +6,7 @@ class_name ShipFollowCamera
 
 func _physics_process(delta: float) -> void:
 	camera_lerp(delta)
+	pass
 	
 func camera_lerp(delta: float) -> void:
 	global_position = lerp(global_position, target.global_position, delta * smooth_speed)

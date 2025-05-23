@@ -10,7 +10,7 @@ func braking(brake: float, forward_speed: float) -> Dictionary[String, float]:
 	#var forward_speed : float = -ship_rb.global_transform.basis.z.dot(ship_rb.linear_velocity)
 	var power : float
 	if forward_speed > 0:
-		power = brake_power * 8 * brake * forward_speed/150
+		power = brake_power * 8 * brake * forward_speed/200
 		ship_rb.apply_force(ship_rb.transform.basis.z * power)
 	else:
 		power = brake_power * 0.2 * brake
