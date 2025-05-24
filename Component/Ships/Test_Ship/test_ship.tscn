@@ -17,7 +17,7 @@ radius = 2.76282
 height = 9.31758
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3vpib"]
-size = Vector3(3.5, 7.805, 1)
+size = Vector3(4.10602, 7.805, 2.39917)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeg6e"]
 
@@ -52,6 +52,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n6ip5")
 
 [node name="TEST_SHIP" type="RigidBody3D"]
+collision_layer = 17
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 10.0
@@ -59,6 +60,7 @@ gravity_scale = 0.0
 angular_damp = 4.0
 
 [node name="HoverRaycast" type="RayCast3D" parent="."]
+visible = false
 target_position = Vector3(0, -5, 0)
 
 [node name="TrackRaycast" type="RayCast3D" parent="."]
@@ -113,9 +115,8 @@ script = ExtResource("6_05umi")
 [node name="BRAKES" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("6_6ec8x")
 
-[node name="HOVER" type="Node" parent="SHIP_COMPONENTS" node_paths=PackedStringArray("hover_raycast", "track_raycast")]
+[node name="HOVER" type="Node" parent="SHIP_COMPONENTS" node_paths=PackedStringArray("track_raycast")]
 script = ExtResource("8_3vpib")
-hover_raycast = NodePath("../../HoverRaycast")
 track_raycast = NodePath("../../TrackRaycast")
 
 [node name="TELEMETRY" type="Node" parent="." node_paths=PackedStringArray("ship_rb")]
