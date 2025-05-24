@@ -32,6 +32,7 @@ func init_ship() -> void:
 	
 	chasis.fuel_setup()
 	burner.heat_setup()
+	hover.hover_rotation_setup()
 
 func ship_running() -> void:
 	var engine_telemetry : Dictionary = engine.thrust(player_input.get_throttle())

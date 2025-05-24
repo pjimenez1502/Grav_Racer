@@ -8,11 +8,12 @@ var hover_strength : float = 1
 var current_hover_influence : float
 
 func _ready() -> void:
-	add_child(debugray)
+	pass
 	
 func _physics_process(delta: float) -> void:
 	#physics_hover(delta)
-	hard_hover(delta)
+	hover_height(delta)
+	hover_rotation(delta)
 
 func physics_hover(delta: float) -> void:
 	var over_ground : bool = hover_raycast.is_colliding()
@@ -26,11 +27,7 @@ func physics_hover(delta: float) -> void:
 var hover_distance : float = 4
 var current_height : float
 
-@onready var ship_up: Node3D = $"../../Ship UP"
-@onready var ship: Node3D = $"../../Ship UP/SHIP"
-var debugray := RayCast3D.new()
-
-func hard_hover(delta: float) -> void:
+func hover_height(delta: float) -> void:
 	## Detect track below car (col 4) -> raycast down to get track collider. Get normal of face hit. Rotate ship according to normal.
 	## If stops detecting track below can get lost??
 	if !track_raycast.is_colliding():
@@ -44,10 +41,46 @@ func hard_hover(delta: float) -> void:
 	#print("TRACK_NORMAL: ", track_normal, " // TRACK_DISTANCE: ", distance_offset, " // shipY: ", ship_rb.position.y)
 	#print("TRACK_POINT: ", track_raycast.get_collision_point(), " // TRACK_POINT: ", track_raycast.get_collision_point() + (Vector3.UP * 100))
 	ship_rb.position.y = lerp(ship_rb.position.y, ship_rb.position.y + distance_offset, delta * 100)
+
+var raycast_Forw : RayCast3D = RayCast3D.new()
+var raycast_Back : RayCast3D = RayCast3D.new()
+var raycast_Left : RayCast3D = RayCast3D.new()
+var raycast_Right : RayCast3D = RayCast3D.new()
+func hover_rotation_setup() -> void:
+	raycast_Forw.position = Vector3(0,0,-4)
+	raycast_Back.position = Vector3(0,0,4)
+	raycast_Left.position = Vector3(-3,0,0)
+	raycast_Right.position = Vector3(3,0,0)
 	
-	#ship.global_transform = align_with_normal(ship.global_transform, track_normal)
-	#ship.global_transform = ship.global_transform.interpolate_with(align_with_normal(ship.global_transform, track_normal), 0.2)
-		
+	raycast_Forw.target_position = Vector3.DOWN * 8
+	raycast_Back.target_position = Vector3.DOWN * 8
+	raycast_Left.target_position = Vector3.DOWN * 8
+	raycast_Right.target_position = Vector3.DOWN * 8
+	
+	ship_rb.add_child.call_deferred(raycast_Forw)
+	ship_rb.add_child.call_deferred(raycast_Back)
+	ship_rb.add_child.call_deferred(raycast_Left)
+	ship_rb.add_child.call_deferred(raycast_Right)
+
+@onready var ship_up: Node3D = $"../../Ship UP"
+@onready var ship_mesh: Node3D = $"../../Ship UP/SHIP"
+func hover_rotation(delta: float) -> void:
+	if !raycast_Back.is_inside_tree():
+		return
+	
+	var distance_F : float = (raycast_Forw.global_position - raycast_Forw.get_collision_point()).length()
+	var distance_B : float = (raycast_Back.global_position - raycast_Back.get_collision_point()).length()
+	var pitch_axis : Vector2 = Vector2(distance_F, distance_B)
+	var pitch_diff : float = pitch_axis.x - pitch_axis.y
+	
+	ship_mesh.rotation.x = lerp_angle(ship_mesh.rotation.x, -deg_to_rad(90 + 8 * pitch_diff), .05)
+	
+	var distance_R : float = (raycast_Right.global_position - raycast_Right.get_collision_point()).length()
+	var distance_L : float = (raycast_Left.global_position - raycast_Left.get_collision_point()).length()
+	var roll_axis : Vector2 = Vector2(distance_R, distance_L)
+	var roll_diff : float = roll_axis.x - roll_axis.y
+	
+	ship_mesh.rotation.y = lerp_angle(ship_mesh.rotation.y, -deg_to_rad(8 * roll_diff), .05)
 
 func align_with_normal(_transform: Transform3D, normal: Vector3) -> Transform3D:
 	_transform.basis.y = normal
