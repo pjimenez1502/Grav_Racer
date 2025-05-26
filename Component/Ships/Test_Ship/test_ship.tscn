@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dq5ed3206xpmj"]
+[gd_scene load_steps=19 format=4 uid="uid://dq5ed3206xpmj"]
 
 [ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/PlayerInput.gd" id="2_gk1ou"]
 [ext_resource type="Script" uid="uid://bv3ekq3e36sq3" path="res://Component/Camera/ShipFollowCamera.gd" id="3_3giqs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://byp3sn1mtjl6y" path="res://Component/Ships/Ship Components/ShipBrakes.gd" id="6_6ec8x"]
 [ext_resource type="Script" uid="uid://b3sunxklbndrb" path="res://Component/Ships/Ship Components/Hover.gd" id="8_3vpib"]
 [ext_resource type="Script" uid="uid://cab5bkvmib1we" path="res://Component/Camera/CameraShake.gd" id="10_dii8a"]
+[ext_resource type="Script" uid="uid://djl8ld135uhnu" path="res://Component/Ships/Ship Components/RaceTracker.gd" id="12_ei3l4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eg5tq"]
 radius = 2.76282
@@ -50,6 +51,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n6ip5")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ei3l4"]
 
 [node name="TEST_SHIP" type="RigidBody3D"]
 collision_layer = 17
@@ -119,10 +122,11 @@ script = ExtResource("6_6ec8x")
 script = ExtResource("8_3vpib")
 track_raycast = NodePath("../../TrackRaycast")
 
-[node name="TELEMETRY" type="Node" parent="." node_paths=PackedStringArray("ship_rb")]
+[node name="TELEMETRY" type="Node" parent="." node_paths=PackedStringArray("ship_rb", "stopwatch")]
 script = ExtResource("5_q7lye")
 ship_rb = NodePath("..")
 telemetry_print = true
+stopwatch = NodePath("../StopWatch")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 10, 20)
@@ -139,3 +143,13 @@ smooth_speed = 20.0
 script = ExtResource("10_dii8a")
 telemetry = NodePath("../../../TELEMETRY")
 camera = NodePath("..")
+
+[node name="StopWatch" type="Area3D" parent="."]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("12_ei3l4")
+
+[node name="Stopwatch Collider" type="CollisionShape3D" parent="StopWatch"]
+shape = SubResource("SphereShape3D_ei3l4")
+
+[connection signal="area_entered" from="StopWatch" to="StopWatch" method="on_start_line_pass"]

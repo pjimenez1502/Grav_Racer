@@ -22,7 +22,8 @@
 			"tasks": [
 				"f8162792-46b6-4e78-82d1-68f28109626e",
 				"447db99f-c533-448d-8a99-3a91185b78db",
-				"94da03a3-c009-4826-a386-1628c2259092"
+				"94da03a3-c009-4826-a386-1628c2259092",
+				"6d7045f2-d6e1-479b-ae82-408d0d9564c5"
 			]
 		},
 		{
@@ -85,6 +86,13 @@
 			"uuid": "a3523c90-9481-4398-831e-bc010453ed5d",
 			"title": "Ship Hovering",
 			"description": "- Stay above track using lerp\t\t\t-XX\n\n- Rotate ship according to Track Normal\n\n- Specific collider around track extending slightly out of track",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "6d7045f2-d6e1-479b-ae82-408d0d9564c5",
+			"title": "Add best lap recording to Stopwatch",
+			"description": "",
 			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
 			"steps": []
 		}

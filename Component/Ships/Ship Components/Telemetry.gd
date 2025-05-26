@@ -3,6 +3,7 @@ class_name ShipTelemetry
 
 @export var ship_rb : RigidBody3D
 @export var telemetry_print : bool
+@export var stopwatch: Stopwatch
 
 var fuel: int
 var heat: int

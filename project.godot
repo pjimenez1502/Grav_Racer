@@ -73,6 +73,7 @@ BURNER={
 
 3d_physics/layer_4="TRACK"
 3d_physics/layer_5="BARRIER"
+3d_physics/layer_8="Stopwatch"
 
 [rendering]
 
