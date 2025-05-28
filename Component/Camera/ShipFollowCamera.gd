@@ -4,6 +4,9 @@ class_name ShipFollowCamera
 @export var target : Node3D
 @export var smooth_speed : float
 
+func _ready() -> void:
+	current = true
+
 func _physics_process(delta: float) -> void:
 	camera_lerp(delta)
 	pass

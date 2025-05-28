@@ -2,10 +2,8 @@ extends Node
 class_name ShipHover
 
 var ship_rb : RigidBody3D
+var ship_mesh : Node3D
 
-func _ready() -> void:
-	pass
-	
 func _physics_process(delta: float) -> void:
 	#physics_hover(delta)
 	hover_height(delta)
@@ -35,10 +33,10 @@ func hover_height(delta: float) -> void:
 	var track_normal : Vector3 = track_raycast.get_collision_normal()
 	var track_distance : Vector3 = (track_raycast.global_position - track_raycast.get_collision_point())
 	var distance_offset : float = (track_distance.length() - hover_distance) * -1
+	var hover_multiplier : float = clamp(abs(distance_offset)/10, 0.05, 1)
 	
-	ship_rb.position.y = lerp(ship_rb.position.y, ship_rb.position.y + distance_offset, delta * 100)
-	#print("TRACK_NORMAL: ", track_normal, " // TRACK_DISTANCE: ", distance_offset, " // shipY: ", ship_rb.position.y)
-	#print("TRACK_POINT: ", track_raycast.get_collision_point(), " // TRACK_POINT: ", track_raycast.get_collision_point() + (Vector3.UP * 100))
+	ship_rb.position.y = lerp(ship_rb.position.y, ship_rb.position.y + distance_offset, delta * 100 * hover_multiplier)
+	print(distance_offset, " -- ", hover_multiplier)
 
 var raycast_lenght : int = 10
 var raycast_Forw : RayCast3D = RayCast3D.new()
@@ -61,8 +59,6 @@ func hover_rotation_setup() -> void:
 	ship_rb.add_child.call_deferred(raycast_Left)
 	ship_rb.add_child.call_deferred(raycast_Right)
 
-@onready var ship_up: Node3D = $"../../Ship UP"
-@onready var ship_mesh: Node3D = $"../../Ship UP/SHIP"
 func hover_rotation(delta: float) -> void:
 	if !raycast_Back.is_inside_tree():
 		return
@@ -72,14 +68,14 @@ func hover_rotation(delta: float) -> void:
 	var pitch_axis : Vector2 = Vector2(distance_F, distance_B)
 	var pitch_diff : float = pitch_axis.x - pitch_axis.y
 	
-	ship_mesh.rotation.x = lerp_angle(ship_mesh.rotation.x, -deg_to_rad(90 + 8 * pitch_diff), .05)
+	ship_mesh.rotation.x = lerp_angle(ship_mesh.rotation.x, -deg_to_rad(8 * pitch_diff/2), .05)
 	
 	var distance_R : float = (raycast_Right.global_position - raycast_Right.get_collision_point()).length()
 	var distance_L : float = (raycast_Left.global_position - raycast_Left.get_collision_point()).length()
 	var roll_axis : Vector2 = Vector2(distance_R, distance_L)
 	var roll_diff : float = roll_axis.x - roll_axis.y
 	
-	ship_mesh.rotation.y = lerp_angle(ship_mesh.rotation.y, -deg_to_rad(8 * roll_diff), .05)
+	ship_mesh.rotation.z = lerp_angle(ship_mesh.rotation.z, -deg_to_rad(8 * roll_diff), .05)
 
 #func align_with_normal(_transform: Transform3D, normal: Vector3) -> Transform3D:
 	#_transform.basis.y = normal

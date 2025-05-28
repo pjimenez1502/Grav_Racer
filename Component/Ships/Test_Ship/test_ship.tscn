@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://dq5ed3206xpmj"]
+[gd_scene load_steps=21 format=4 uid="uid://dq5ed3206xpmj"]
 
+[ext_resource type="Script" uid="uid://40qy5iu8khvl" path="res://Component/Ships/Ship Components/Ship.gd" id="1_7gwbd"]
 [ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/PlayerInput.gd" id="2_gk1ou"]
 [ext_resource type="Script" uid="uid://bv3ekq3e36sq3" path="res://Component/Camera/ShipFollowCamera.gd" id="3_3giqs"]
 [ext_resource type="Script" uid="uid://bidfkho8hyrqq" path="res://Component/Ships/Test_Ship/ShipComponents.gd" id="3_eg5tq"]
@@ -9,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dilxu6wgj8mny" path="res://Component/Ships/Ship Components/Telemetry.gd" id="5_q7lye"]
 [ext_resource type="Script" uid="uid://by0jsimpx8fud" path="res://Component/Ships/Ship Components/ShipBodywork.gd" id="6_05umi"]
 [ext_resource type="Script" uid="uid://byp3sn1mtjl6y" path="res://Component/Ships/Ship Components/ShipBrakes.gd" id="6_6ec8x"]
-[ext_resource type="Script" uid="uid://b3sunxklbndrb" path="res://Component/Ships/Ship Components/Hover.gd" id="8_3vpib"]
+[ext_resource type="Script" uid="uid://b3sunxklbndrb" path="res://Component/Ships/Ship Components/ShipHover.gd" id="8_3vpib"]
 [ext_resource type="Script" uid="uid://cab5bkvmib1we" path="res://Component/Camera/CameraShake.gd" id="10_dii8a"]
 [ext_resource type="Script" uid="uid://djl8ld135uhnu" path="res://Component/Ships/Ship Components/RaceTracker.gd" id="12_ei3l4"]
 
@@ -68,6 +69,7 @@ center_of_mass_mode = 1
 contact_monitor = true
 max_contacts_reported = 2
 angular_damp = 4.0
+script = ExtResource("1_7gwbd")
 
 [node name="HoverRaycast" type="RayCast3D" parent="."]
 visible = false
@@ -85,29 +87,22 @@ disabled = true
 [node name="CollisionShape2" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_ei3l4")
 
-[node name="Ship UP" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+[node name="Ship Mesh" type="Node3D" parent="."]
 
-[node name="SHIP" type="Node3D" parent="Ship UP"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+[node name="Test_01" type="Node3D" parent="Ship Mesh"]
 
-[node name="Test_01" type="Node3D" parent="Ship UP/SHIP"]
-
-[node name="Cube" type="MeshInstance3D" parent="Ship UP/SHIP/Test_01"]
+[node name="Cube" type="MeshInstance3D" parent="Ship Mesh/Test_01"]
 mesh = SubResource("ArrayMesh_i06c7")
 skeleton = NodePath("")
 
-[node name="First Person Camera" type="Camera3D" parent="Ship UP/SHIP"]
+[node name="First Person Camera" type="Camera3D" parent="Ship Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 1.07755, 0.232021)
-current = true
 
 [node name="PLAYER_INPUT" type="Node" parent="."]
 script = ExtResource("2_gk1ou")
 
-[node name="SHIP_COMPONENTS" type="Node" parent="." node_paths=PackedStringArray("ship_rb", "ship_mesh")]
+[node name="SHIP_COMPONENTS" type="Node" parent="."]
 script = ExtResource("3_eg5tq")
-ship_rb = NodePath("..")
-ship_mesh = NodePath("../Ship UP/SHIP")
 
 [node name="ENGINE" type="Node" parent="SHIP_COMPONENTS"]
 script = ExtResource("3_g83f7")
@@ -140,7 +135,6 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 [node name="Third Person Camera" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 20)
 top_level = true
-current = true
 script = ExtResource("3_3giqs")
 target = NodePath("..")
 smooth_speed = 20.0
@@ -149,6 +143,7 @@ smooth_speed = 20.0
 script = ExtResource("10_dii8a")
 telemetry = NodePath("../../../TELEMETRY")
 camera = NodePath("..")
+shake_strength = 0.05
 
 [node name="StopWatch" type="Area3D" parent="."]
 collision_layer = 128

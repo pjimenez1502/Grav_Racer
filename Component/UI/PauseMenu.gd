@@ -11,25 +11,24 @@ func _ready() -> void:
 	visible = open
 
 func toggle() -> void:
-	open = !open
-	visible = open
-	
-	get_tree().paused = open
-	
-	if open:
+	set_open(!open)
+
+func set_open(value: bool) -> void:
+	open = value
+	visible = value
+	get_tree().paused = value
+	if value:
 		set_focus()
 
 func restart() -> void:
-	print("RESTART")
-	pass
+	RaceDirector.replace_ship()
+	set_open(false)
 
 func resume() -> void:
-	toggle()
-	pass
+	set_open(false)
 
 func exit() -> void:
-	get_tree().quit()
-	pass
+	get_tree().quit() 
 
 
 

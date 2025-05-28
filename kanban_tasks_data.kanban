@@ -18,7 +18,7 @@
 		},
 		{
 			"uuid": "968e6d92-7123-4786-908e-8d18df56196e",
-			"title": "TODO",
+			"title": "STASH",
 			"tasks": [
 				"f8162792-46b6-4e78-82d1-68f28109626e",
 				"447db99f-c533-448d-8a99-3a91185b78db",
@@ -28,15 +28,24 @@
 		},
 		{
 			"uuid": "b4f1160d-a5d5-479e-b7a0-5052dba0fb2c",
-			"title": "DOING",
+			"title": "TODO",
 			"tasks": [
-				"a3523c90-9481-4398-831e-bc010453ed5d"
+				"34fbe833-2de1-499c-b092-5258666d9d0d"
 			]
 		},
 		{
 			"uuid": "59cb7c9d-b542-4fa6-8288-d5b2b118f71a",
+			"title": "DOING",
+			"tasks": [
+				"383126fb-57c1-4bb4-bfee-0196b0aabc6f"
+			]
+		},
+		{
+			"uuid": "e84cadb8-d257-4e40-b6ea-bd460afdf497",
 			"title": "DONE",
-			"tasks": []
+			"tasks": [
+				"a3523c90-9481-4398-831e-bc010453ed5d"
+			]
 		}
 	],
 	"tasks": [
@@ -85,13 +94,27 @@
 		{
 			"uuid": "a3523c90-9481-4398-831e-bc010453ed5d",
 			"title": "Ship Hovering",
-			"description": "- Stay above track using lerp\t\t\t-XX\n\n- Rotate ship according to Track Normal\n\n- Specific collider around track extending slightly out of track",
+			"description": "",
 			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
 			"steps": []
 		},
 		{
 			"uuid": "6d7045f2-d6e1-479b-ae82-408d0d9564c5",
 			"title": "Add best lap recording to Stopwatch",
+			"description": "",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "34fbe833-2de1-499c-b092-5258666d9d0d",
+			"title": "Reduce Stiffening",
+			"description": "",
+			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
+			"steps": []
+		},
+		{
+			"uuid": "383126fb-57c1-4bb4-bfee-0196b0aabc6f",
+			"title": "Menu -> Start at circuit selection, instantiate circuit, instantiate ship",
 			"description": "",
 			"category": "4bc5ee54-a436-4b93-8c78-97e05e4da2e3",
 			"steps": []
@@ -110,6 +133,9 @@
 			],
 			[
 				"59cb7c9d-b542-4fa6-8288-d5b2b118f71a"
+			],
+			[
+				"e84cadb8-d257-4e40-b6ea-bd460afdf497"
 			]
 		]
 	}

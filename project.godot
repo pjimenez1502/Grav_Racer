@@ -24,9 +24,13 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="Grav_Racer"
-run/main_scene="uid://dsrio4qts13qc"
+run/main_scene="uid://lgopjlitk63m"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+RaceDirector="*res://Component/Global/RaceDirector.gd"
 
 [debug]
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CircuitData" load_steps=4 format=3 uid="uid://dnosgav2y2hwj"]
+
+[ext_resource type="PackedScene" uid="uid://crywyhqekjam8" path="res://Component/Circuits/TestCircuit01/test_circuit_01.tscn" id="1_fxash"]
+[ext_resource type="Script" uid="uid://wa1xg2qx7fcs" path="res://DATA/CircuitData.gd" id="1_sn47o"]
+[ext_resource type="Texture2D" uid="uid://ur7xyepcmi6w" path="res://DATA/Circuits/Circuit Test 01.png" id="1_uw6bc"]
+
+[resource]
+script = ExtResource("1_sn47o")
+id = "test_01"
+name = "Test 1"
+icon = ExtResource("1_uw6bc")
+scene = ExtResource("1_fxash")
+metadata/_custom_type_script = "uid://wa1xg2qx7fcs"
