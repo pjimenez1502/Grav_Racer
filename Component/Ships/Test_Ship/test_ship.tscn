@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dq5ed3206xpmj"]
+[gd_scene load_steps=20 format=4 uid="uid://dq5ed3206xpmj"]
 
 [ext_resource type="Script" uid="uid://dnnvpdyic2784" path="res://Component/Ships/Test_Ship/PlayerInput.gd" id="2_gk1ou"]
 [ext_resource type="Script" uid="uid://bv3ekq3e36sq3" path="res://Component/Camera/ShipFollowCamera.gd" id="3_3giqs"]
@@ -13,12 +13,15 @@
 [ext_resource type="Script" uid="uid://cab5bkvmib1we" path="res://Component/Camera/CameraShake.gd" id="10_dii8a"]
 [ext_resource type="Script" uid="uid://djl8ld135uhnu" path="res://Component/Ships/Ship Components/RaceTracker.gd" id="12_ei3l4"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ei3l4"]
+friction = 0.0
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eg5tq"]
 radius = 2.76282
 height = 9.31758
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3vpib"]
-size = Vector3(4.10602, 7.805, 2.39917)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ei3l4"]
+radius = 3.1543
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeg6e"]
 
@@ -59,7 +62,11 @@ collision_layer = 17
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ei3l4")
 gravity_scale = 0.0
+center_of_mass_mode = 1
+contact_monitor = true
+max_contacts_reported = 2
 angular_damp = 4.0
 
 [node name="HoverRaycast" type="RayCast3D" parent="."]
@@ -76,8 +83,7 @@ shape = SubResource("CapsuleShape3D_eg5tq")
 disabled = true
 
 [node name="CollisionShape2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("BoxShape3D_3vpib")
+shape = SubResource("CylinderShape3D_ei3l4")
 
 [node name="Ship UP" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -152,4 +158,5 @@ script = ExtResource("12_ei3l4")
 [node name="Stopwatch Collider" type="CollisionShape3D" parent="StopWatch"]
 shape = SubResource("SphereShape3D_ei3l4")
 
+[connection signal="body_entered" from="." to="SHIP_COMPONENTS/CHASIS" method="on_collision"]
 [connection signal="area_entered" from="StopWatch" to="StopWatch" method="on_start_line_pass"]

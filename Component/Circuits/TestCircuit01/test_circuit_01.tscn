@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://crywyhqekjam8"]
+[gd_scene load_steps=7 format=3 uid="uid://crywyhqekjam8"]
 
 [ext_resource type="PackedScene" uid="uid://dq5ed3206xpmj" path="res://Component/Ships/Test_Ship/test_ship.tscn" id="1_vlkx1"]
 [ext_resource type="PackedScene" uid="uid://b6vk31gnujsbc" path="res://Component/Circuits/TestCircuit01/Circuit Test 01.glb" id="2_r4jpx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4jpx"]
+albedo_color = Color(0.581033, 0.581033, 0.581033, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7uvr"]
 transparency = 1
@@ -13,7 +16,7 @@ diffuse_mode = 3
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r4jpx"]
-size = Vector3(60, 30, 1)
+size = Vector3(96.0159, 38.4871, 6.05078)
 
 [node name="Test Circuit 01" type="Node3D"]
 
@@ -21,6 +24,9 @@ size = Vector3(60, 30, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 137.982)
 
 [node name="Circuit Test 01" parent="." instance=ExtResource("2_r4jpx")]
+
+[node name="Road " parent="Circuit Test 01" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_r4jpx")
 
 [node name="Barrier " parent="Circuit Test 01" index="1"]
 surface_material_override/0 = SubResource("StandardMaterial3D_h7uvr")
@@ -45,7 +51,7 @@ collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.5388, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.7613, 0)
 shape = SubResource("BoxShape3D_r4jpx")
 
 [editable path="Circuit Test 01"]

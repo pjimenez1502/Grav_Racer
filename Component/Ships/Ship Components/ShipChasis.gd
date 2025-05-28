@@ -33,3 +33,13 @@ func refuel() -> void:
 func fuel_burn(fuel_burn: float) -> float:
 	fuel_current -= fuel_burn
 	return fuel_current
+
+func on_collision(body: Node3D) -> void:
+	var normal : Vector3 = get_collision_normal(body)
+	ship_rb.apply_force(normal * 10000)
+
+func get_collision_normal(body: Node3D) -> Vector3:
+	var state : PhysicsDirectBodyState3D = PhysicsServer3D.body_get_direct_state(ship_rb.get_rid())
+	var normal : Vector3 = state.get_contact_local_normal(body.get_index())
+	
+	return normal
