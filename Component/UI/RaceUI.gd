@@ -18,3 +18,12 @@ func _physics_process(delta: float) -> void:
 	
 	current_time.text = player_ship.telemetry.stopwatch.get_current_time()
 	last_lap_time.text = player_ship.telemetry.stopwatch.get_last_time()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("START"):
+		toggle_pause()
+
+@onready var pause_menu: RacePauseMenu = %PauseMenu
+func toggle_pause() -> void:
+	pause_menu.toggle()
+	

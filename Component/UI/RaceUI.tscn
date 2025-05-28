@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cea6erqq1wf8g"]
+[gd_scene load_steps=3 format=3 uid="uid://cea6erqq1wf8g"]
 
 [ext_resource type="Script" uid="uid://b7q3g3e5mtjft" path="res://Component/UI/RaceUI.gd" id="1_m0s8s"]
+[ext_resource type="Script" uid="uid://crrrl1p81t5ok" path="res://Component/UI/PauseMenu.gd" id="2_b8mhg"]
 
 [node name="RaceUI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,3 +81,51 @@ theme_override_font_sizes/font_size = 24
 text = "1:40:290"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PauseMenu" type="ColorRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.282353, 0.282353, 0.282353, 0.266667)
+script = ExtResource("2_b8mhg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -50.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart" type="Button" parent="PauseMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart Lap"
+
+[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="Exit" type="Button" parent="PauseMenu/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Restart" to="PauseMenu" method="restart"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu" method="resume"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Exit" to="PauseMenu" method="exit"]
