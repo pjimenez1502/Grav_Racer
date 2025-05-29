@@ -18,3 +18,6 @@ func _ready() -> void:
 func select_circuit(circuit_id : String) -> void:
 	RaceDirector.load_circuit(circuit_dictionary[circuit_id])
 	queue_free()
+
+func back() -> void:
+	SceneManager.ui_transition(self, "startmenu", SceneManager.DIRECTION.LEFT)

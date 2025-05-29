@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://doa3ilpvhjo38"]
+
+[ext_resource type="Script" uid="uid://bmkyimfbi2qd0" path="res://Component/UI/StartMenu.gd" id="1_4nbyq"]
+[ext_resource type="Theme" uid="uid://b8qpktiy0mtbc" path="res://Component/UI/Themes/ButtonsTheme.tres" id="2_npfyw"]
+[ext_resource type="Script" uid="uid://gm8flsse5ea4" path="res://Component/UI/Element/Button.gd" id="2_oy8mv"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4nbyq")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 83.0
+offset_right = 451.0
+offset_bottom = 332.0
+theme_override_font_sizes/font_size = 64
+text = "MEOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 78.0
+offset_top = 375.0
+offset_right = 348.0
+offset_bottom = 565.0
+
+[node name="Buttons" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Quick Session" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_npfyw")
+text = "Quick Session"
+script = ExtResource("2_oy8mv")
+
+[node name="Career" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_npfyw")
+disabled = true
+text = "Career"
+script = ExtResource("2_oy8mv")
+
+[node name="Settings" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_npfyw")
+text = "Settings"
+script = ExtResource("2_oy8mv")
+
+[node name="Exit" type="Button" parent="Control/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_npfyw")
+text = "Exit"
+script = ExtResource("2_oy8mv")
+
+[connection signal="pressed" from="Control/Buttons/Quick Session" to="." method="open_quick_session"]
+[connection signal="pressed" from="Control/Buttons/Settings" to="." method="open_settings"]
+[connection signal="pressed" from="Control/Buttons/Exit" to="." method="exit"]

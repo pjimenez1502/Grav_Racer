@@ -1,7 +1,6 @@
 extends TextureButton
 class_name CircuitButton
 
-
 @onready var circuit_icon: TextureRect = %"Circuit Icon"
 @onready var circuit_name: Label = %"Circuit Name"
 var circuit_data: CircuitData

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://lgopjlitk63m"]
+[gd_scene load_steps=6 format=3 uid="uid://lgopjlitk63m"]
 
 [ext_resource type="Script" uid="uid://e8sacveqo8ti" path="res://Component/UI/CircuitSelection/CircuitSelect.gd" id="1_4ajwf"]
 [ext_resource type="Script" uid="uid://wa1xg2qx7fcs" path="res://DATA/CircuitData.gd" id="2_jefnn"]
 [ext_resource type="Resource" uid="uid://dnosgav2y2hwj" path="res://DATA/Circuits/Circuit Test 01.tres" id="3_v12fr"]
+[ext_resource type="Theme" uid="uid://b8qpktiy0mtbc" path="res://Component/UI/Themes/ButtonsTheme.tres" id="4_3l0yv"]
+[ext_resource type="Script" uid="uid://gm8flsse5ea4" path="res://Component/UI/Element/Button.gd" id="5_3lop7"]
 
 [node name="CircuitSelection Screen" type="Control"]
 layout_mode = 3
@@ -14,14 +16,25 @@ grow_vertical = 2
 script = ExtResource("1_4ajwf")
 circuit_list = Array[ExtResource("2_jefnn")]([ExtResource("3_v12fr")])
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.22788, 0.1998, 0.27, 1)
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 289.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 40
+text = "Quick Session"
+
+[node name="Back Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 572.0
+offset_right = 138.0
+offset_bottom = 612.0
+theme = ExtResource("4_3l0yv")
+text = "BACK"
+script = ExtResource("5_3lop7")
 
 [node name="ButtonContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(900, 200)
@@ -37,3 +50,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 alignment = 1
+
+[connection signal="pressed" from="Back Button" to="." method="back"]
