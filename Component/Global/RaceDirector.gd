@@ -18,6 +18,7 @@ func restart_lap() -> void:
 
 func replace_ship() -> void:
 	if ship_rb:
+		print(ship_rb)
 		ship_rb.queue_free()
 	ship_rb = spawn_player_ship()
 	
@@ -26,7 +27,7 @@ func replace_ship() -> void:
 
 func load_circuit(circuit_data: CircuitData) -> void:
 	race_scene = RACE_SCENE.instantiate()
-	get_tree().root.add_child(race_scene)
+	SceneManager.GAME_SCENE.add_child(race_scene)
 	
 	circuit = circuit_data.scene.instantiate()
 	race_scene.sub_viewport.add_child(circuit)

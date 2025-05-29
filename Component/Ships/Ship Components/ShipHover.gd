@@ -36,7 +36,6 @@ func hover_height(delta: float) -> void:
 	var hover_multiplier : float = clamp(abs(distance_offset)/10, 0.05, 1)
 	
 	ship_rb.position.y = lerp(ship_rb.position.y, ship_rb.position.y + distance_offset, delta * 100 * hover_multiplier)
-	print(distance_offset, " -- ", hover_multiplier)
 
 var raycast_lenght : int = 10
 var raycast_Forw : RayCast3D = RayCast3D.new()

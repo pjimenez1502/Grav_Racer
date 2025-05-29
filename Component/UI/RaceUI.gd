@@ -11,10 +11,6 @@ class_name RaceUI
 @onready var last_lap_time: Label = %LastLapTime
 
 
-func _ready() -> void:
-	player_ship = RaceDirector.ship_rb
-	pass
-
 func _physics_process(delta: float) -> void:
 	update_telemetry()
 

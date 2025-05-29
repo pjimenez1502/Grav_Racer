@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dixqvs6v5o4wi"]
+[gd_scene load_steps=8 format=3 uid="uid://dixqvs6v5o4wi"]
 
+[ext_resource type="Script" uid="uid://b6j4muvwk8sbq" path="res://Component/UI/GAME.gd" id="1_ab3r1"]
 [ext_resource type="Script" uid="uid://cugckwvd1nxtg" path="res://Component/UI/DynamicBackground.gd" id="1_fy4ai"]
 [ext_resource type="PackedScene" uid="uid://doa3ilpvhjo38" path="res://Component/UI/StartMenu.tscn" id="1_m26ab"]
+[ext_resource type="Material" uid="uid://b6r8l6he30uxj" path="res://Shader/Filter_and_color_mat.tres" id="3_1474k"]
 
 [sub_resource type="Gradient" id="Gradient_fy4ai"]
 offsets = PackedFloat32Array(0, 0.86911)
@@ -28,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ab3r1")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -59,3 +62,14 @@ texture = SubResource("NoiseTexture2D_fy4ai")
 
 [node name="StartMenu" parent="." instance=ExtResource("1_m26ab")]
 layout_mode = 1
+
+[node name="Chromatic Aberration Filter" type="ColorRect" parent="."]
+top_level = true
+material = ExtResource("3_1474k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

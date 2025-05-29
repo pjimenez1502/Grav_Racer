@@ -16,7 +16,7 @@ func toggle() -> void:
 func set_open(value: bool) -> void:
 	open = value
 	visible = value
-	get_tree().paused = value
+	SceneManager.pause_game(value)
 	if value:
 		set_focus()
 
@@ -28,7 +28,8 @@ func resume() -> void:
 	set_open(false)
 
 func exit() -> void:
-	get_tree().quit() 
+	SceneManager.scene_transition(get_parent().get_parent(), "quicksesh")
+	SceneManager.pause_game(false)
 
 
 
