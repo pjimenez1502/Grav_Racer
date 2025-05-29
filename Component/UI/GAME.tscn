@@ -1,14 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dixqvs6v5o4wi"]
+[gd_scene load_steps=6 format=3 uid="uid://dixqvs6v5o4wi"]
 
+[ext_resource type="Script" uid="uid://cugckwvd1nxtg" path="res://Component/UI/DynamicBackground.gd" id="1_fy4ai"]
 [ext_resource type="PackedScene" uid="uid://doa3ilpvhjo38" path="res://Component/UI/StartMenu.tscn" id="1_m26ab"]
 
-[sub_resource type="Gradient" id="Gradient_jkyty"]
-offsets = PackedFloat32Array(0, 0.994764)
-colors = PackedColorArray(0.449591, 0.220983, 0.465871, 1, 0.1496, 0.44, 0.42548, 1)
+[sub_resource type="Gradient" id="Gradient_fy4ai"]
+offsets = PackedFloat32Array(0, 0.86911)
+colors = PackedColorArray(0.19, 0.1083, 0.187277, 1, 0.1978, 0.43, 0.39517, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6fs7s"]
-gradient = SubResource("Gradient_jkyty")
-fill_from = Vector2(0.405983, 0.970085)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1474k"]
+noise_type = 2
+frequency = 0.2
+fractal_type = 0
+cellular_distance_function = 3
+cellular_jitter = -1.16
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fy4ai"]
+width = 128
+height = 128
+color_ramp = SubResource("Gradient_fy4ai")
+noise = SubResource("FastNoiseLite_1474k")
 
 [node name="GAME" type="Control"]
 layout_mode = 3
@@ -18,14 +29,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_6fs7s")
+script = ExtResource("1_fy4ai")
+
+[node name="Background" type="TextureRect" parent="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(1600, 900)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_fy4ai")
 
 [node name="StartMenu" parent="." instance=ExtResource("1_m26ab")]
 layout_mode = 1
